@@ -1,13 +1,11 @@
-import bcrypt
-import jwt
 from datetime import datetime
 
+import bcrypt
+import jwt
 from flask import current_app
 
-from api.exceptions.badrequest import BadRequestException
 from api.exceptions.validation import ValidationException
 
-from neo4j.exceptions import ConstraintError
 
 class AuthDAO:
     """

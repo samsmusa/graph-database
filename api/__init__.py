@@ -22,6 +22,7 @@ from .routes.genres import genre_routes
 from .routes.people import people_routes
 from .routes.status import status_routes
 
+
 def create_app(test_config=None):
     # Create and configure app
     static_folder = os.path.join(os.path.dirname(__file__), '..', 'public')
@@ -58,10 +59,10 @@ def create_app(test_config=None):
     # JWT
     jwt = JWTManager(app)
 
-    CORS(app, 
-        resources={r"/*": {"origins": ["http://localhost:3000", "http://127.0.0.1:3000"]}}
-    )
-    
+    CORS(app,
+         resources={r"/*": {"origins": ["http://localhost:3000", "http://127.0.0.1:3000"]}}
+         )
+
     # Register Routes
     app.register_blueprint(auth_routes)
     app.register_blueprint(account_routes)
@@ -90,7 +91,5 @@ def create_app(test_config=None):
     @app.errorhandler(NotFoundException)
     def handle_not_found_exception(err):
         return {"message": str(err)}, 404
-
-
 
     return app
